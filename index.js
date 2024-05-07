@@ -1,6 +1,9 @@
+// Create variable that include packages needed for this application
 const inquirer = require("inquirer");
 const fs = require("fs");
+const fileName = "./examples/logo.svg";
 
+// Create an array of questions for user input
 const questions = [
     {
         type: "input",
@@ -24,3 +27,10 @@ const questions = [
         name: "shapeColor",
     },
 ];
+
+// Create function to write logo.svg file
+function writeToFile(fileName, data) {
+    fs.writeFile(fileName, data, (err) =>
+        err ? console.error(err) : console.log("Generated logo.svg")
+    );
+};
