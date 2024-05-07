@@ -15,5 +15,9 @@
     "url": "ClarissaMobley"
   },
   "author": "Clarissa Mobley",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "inquirer": "^9.2.20",
+    "jest": "^29.7.0"
+  }
 }
