@@ -33,4 +33,14 @@ function writeToFile(fileName, data) {
     fs.writeFile(fileName, data, (err) =>
         err ? console.error(err) : console.log("Generated logo.svg")
     );
-};
+}
+
+// Create a function to intialize app
+function init() {
+    inquirer.prompt(questions).then(() => {
+        writeToFile(fileName)
+    });
+}
+
+// Function call to initialize app
+init();
