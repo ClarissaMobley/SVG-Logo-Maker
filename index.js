@@ -53,19 +53,22 @@ const questions = [
 
 // Using ORM to correspond to the shape classes
 const shapeClasses = {
-    "Circle": Circle,
-    "Triangle": Triangle,
-    "Square": Square
+  Circle: Circle,
+  Triangle: Triangle,
+  Square: Square,
 };
 
-const { text, textColor, shape, shapeColor } = answers;
+function generateSVG(answers) {
+  const { text, textColor, shape, shapeColor } = answers;
+  const shapeClass = shapeClasses[shape];
+  const shapeObj = new shapeClass(shapeColor);
 
   // Return SVG string
   return `<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
     ${shapeObj.render()}
     <text x="150" y="100" font-family="Arial" font-size="20" fill="${textColor}" text-anchor="middle">${text}</text>
     </svg>`;
-
+}
 
 // Create function to write logo.svg file
 function writeToFile(fileName, data) {
@@ -84,4 +87,3 @@ function init() {
 
 // Function call to initialize app
 init();
-
