@@ -16,8 +16,7 @@ const questions = [
   },
   {
     type: "input",
-    message:
-      "Please enter color keyword (OR a hexadecimal number) for your logo's text",
+    message: "Please enter color keyword (OR a hexadecimal number) for your logo's text",
     name: "textColor",
     default: "white",
   },
