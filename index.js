@@ -34,29 +34,38 @@ const questions = [
   },
 ];
 
-// Create function to generate SVG
-function generateSVG(data) {
-  const { text, textColor, shape, shapeColor } = data;
-  let shapeObj;
-  switch (shape) {
-    case "Circle":
-      shapeObj = new Circle();
-      break;
-    case "Triangle":
-      shapeObj = new Triangle();
-      break;
-    case "Square":
-      shapeObj = new Square();
-      break;
-  }
-    shapeObj.setColor(shapeColor);
+// // Create function to generate SVG
+// function generateSVG(data) {
+//   const { text, textColor, shape, shapeColor } = data;
+//   let shapeObj;
+//   switch (shape) {
+//     case "Circle":
+//       shapeObj = new Circle();
+//       break;
+//     case "Triangle":
+//       shapeObj = new Triangle();
+//       break;
+//     case "Square":
+//       shapeObj = new Square();
+//       break;
+//   }
+//     shapeObj.setColor(shapeColor);
+
+// Using ORM to correspond to the shape classes
+const shapeClasses = {
+    "Circle": Circle,
+    "Triangle": Triangle,
+    "Square": Square
+};
+
+const { text, textColor, shape, shapeColor } = answers;
 
   // Return SVG string
   return `<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
-    ${shapeObj.render()} 
+    ${shapeObj.render()}
     <text x="150" y="100" font-family="Arial" font-size="20" fill="${textColor}" text-anchor="middle">${text}</text>
     </svg>`;
-}
+
 
 // Create function to write logo.svg file
 function writeToFile(fileName, data) {
@@ -75,3 +84,4 @@ function init() {
 
 // Function call to initialize app
 init();
+
