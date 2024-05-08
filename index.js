@@ -12,6 +12,7 @@ const questions = [
     name: "text",
     validate: (text) =>
       text.length > 3 ? "Please enter up to 3 characters" : true,
+    filter: (text) => text.toUpperCase(),
   },
   {
     type: "input",
@@ -31,6 +32,7 @@ const questions = [
     message:
       "Please enter a color (OR a hexadecimal number) for your logo's shape.",
     name: "shapeColor",
+    default: "hotpink",
   },
 ];
 
@@ -51,9 +53,9 @@ function generateSVG(answers) {
   shapeObj.setColor(shapeColor);
 
   // Return SVG string
-  return `<svg width="300" height="200" viewbox= "0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+  return `<svg width="300" height="200" viewbox= "0 0 300 250" xmlns="http://www.w3.org/2000/svg">
         ${shapeObj.render()}
-        <text x="150" y="100" font-family="Arial" font-size="40" fill="${textColor}" text-anchor="middle" dominant-baseline="middle">${text}</text>
+        <text x="150" y="100" font-family="Arial" font-size="50" fill="${textColor}" text-anchor="middle" dominant-baseline="middle">${text}</text>
         </svg>`;
 }
 
