@@ -1,7 +1,7 @@
 // Create variable that include packages needed for this application
 const inquirer = require("inquirer");
 const fs = require("fs");
-const fileName = "./examples/circle.svg";
+const fileName = "./examples/square.svg";
 const { Circle, Triangle, Square } = require("./lib/shapes");
 
 // Create an array of questions for user input
@@ -53,7 +53,7 @@ function generateSVG(answers) {
   shapeObj.setColor(shapeColor);
 
   // Return SVG string
-  return `<svg width="300" height="200" viewbox= "0 0 300 250" xmlns="http://www.w3.org/2000/svg">
+  return `<svg width="300" height="200" viewbox= "0 0 300 200" xmlns="http://www.w3.org/2000/svg">
         ${shapeObj.render()}
         <text x="150" y="100" font-family="Arial" font-size="50" fill="${textColor}" text-anchor="middle" dominant-baseline="middle">${text}</text>
         </svg>`;
