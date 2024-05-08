@@ -60,9 +60,9 @@ function writeToFile(fileName, data) {
 
 // Create a function to intialize app
 function init() {
-    inquirer.prompt(questions).then(() => {
-        const svg = generateSVG(data);
-        writeToFile(fileName)
+    inquirer.prompt(questions).then((answers) => {
+        const svg = generateSVG(answers);
+        writeToFile(fileName, svg)
     });
 }
 
