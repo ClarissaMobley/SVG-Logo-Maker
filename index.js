@@ -57,17 +57,20 @@ const shapeClasses = {
   Triangle: Triangle,
   Square: Square,
 };
-
+// Create function to generate SVG
 function generateSVG(answers) {
-  const { text, textColor, shape, shapeColor } = answers;
-  const ShapeClass = shapeClasses[shape];
-  const shapeObj = new ShapeClass(shapeColor);
+    const { text, textColor, shape, shapeColor } = answers;
+    const shapeClass = shapeClasses[shape];
+    const shapeObj = new shapeClass();
 
-  // Return SVG string
-  return `<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
-    ${shapeObj.render()}
-    <text x="150" y="100" font-family="Arial" font-size="20" fill="${textColor}" text-anchor="middle">${text}</text>
-    </svg>`;
+    // Set the shape color
+    shapeObj.setColor(shapeColor);
+
+    // Return SVG string
+    return `<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+        ${shapeObj.render()}
+        <text x="150" y="100" font-family="Arial" font-size="20" fill="${textColor}" text-anchor="middle">${text}</text>
+        </svg>`;
 }
 
 // Create function to write logo.svg file
@@ -76,6 +79,7 @@ function writeToFile(fileName, data) {
     err ? console.error(err) : console.log("Generated logo.svg")
   );
 }
+
 
 // Create a function to intialize app
 function init() {
