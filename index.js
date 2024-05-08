@@ -2,6 +2,7 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 const fileName = "./examples/logo.svg";
+const {Circle, Triangle, Square} = require("./lib/shapes");
 
 // Create an array of questions for user input
 const questions = [
@@ -15,6 +16,7 @@ const questions = [
         type: "input",
         message: "Please enter color keyword (OR a hexadecimal number) for your logo's text",
         name: "textColor",
+        default: "white",
     },
     {
         type: "list",
