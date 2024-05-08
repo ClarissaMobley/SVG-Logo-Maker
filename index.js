@@ -60,8 +60,8 @@ const shapeClasses = {
 
 function generateSVG(answers) {
   const { text, textColor, shape, shapeColor } = answers;
-  const shapeClass = shapeClasses[shape];
-  const shapeObj = new shapeClass(shapeColor);
+  const ShapeClass = shapeClasses[shape];
+  const shapeObj = new ShapeClass(shapeColor);
 
   // Return SVG string
   return `<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
@@ -79,10 +79,15 @@ function writeToFile(fileName, data) {
 
 // Create a function to intialize app
 function init() {
-  inquirer.prompt(questions).then((answers) => {
-    const svg = generateSVG(answers);
-    writeToFile(fileName, svg);
-  });
+  inquirer
+    .prompt(questions)
+    .then((answers) => {
+      const svg = generateSVG(answers);
+      writeToFile(fileName, svg);
+    })
+    .catch((error) => {
+      console.error("Error: ", error);
+    });
 }
 
 // Function call to initialize app
