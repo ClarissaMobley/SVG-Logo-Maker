@@ -40,15 +40,16 @@ function generateSVG(data) {
   let shapeObj;
   switch (shape) {
     case "Circle":
-      shapeObj = new Circle(shapeColor);
+      shapeObj = new Circle();
       break;
     case "Triangle":
-      shapeObj = new Triangle(shapeColor);
+      shapeObj = new Triangle();
       break;
     case "Square":
-      shapeObj = new Square(shapeColor);
+      shapeObj = new Square();
       break;
   }
+    shapeObj.setColor(shapeColor);
 
   // Return SVG string
   return `<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
