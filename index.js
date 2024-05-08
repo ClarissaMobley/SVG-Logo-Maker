@@ -30,6 +30,26 @@ const questions = [
         name: "shapeColor",
     },
 ];
+function generateSVG(data) {
+    const {text, textColor, shape, shapeColor} = data;
+    let shapeObj;
+    switch (shape) {
+        case "Circle" :
+            shapeObj = new Circle(shapeColor);
+            break;
+        case "Triangle" :
+            shapeObj = new Triangle(shapeColor);
+            break;
+        case "Square" :
+            shapeObj = new Square(shapeColor);
+            break;
+    }
+
+    return `<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+    ${shapeObj.render()} 
+    <text x="150" y="100" font-family="Arial" font-size="20" fill="${textColor}" text-anchor="middle">${text}</text>
+    </svg>`
+}
 
 // Create function to write logo.svg file
 function writeToFile(fileName, data) {
@@ -41,6 +61,7 @@ function writeToFile(fileName, data) {
 // Create a function to intialize app
 function init() {
     inquirer.prompt(questions).then(() => {
+        const svg = generateSVG(data);
         writeToFile(fileName)
     });
 }
