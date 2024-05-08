@@ -1,7 +1,7 @@
 // Create variable that include packages needed for this application
 const inquirer = require("inquirer");
 const fs = require("fs");
-const fileName = "./examples/logo.svg";
+const fileName = "./examples/circle.svg";
 const { Circle, Triangle, Square } = require("./lib/shapes");
 
 // Create an array of questions for user input
